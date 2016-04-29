@@ -3,22 +3,16 @@ require 'byebug'
 require 'pry-byebug'
 require 'minitest/autorun'
 
-# Test Score 80%
+# Test Score 100%
+def solution(n)
+  binary_num = n.to_s(2)
+  binary_array = binary_num.split('1')
 
-# trailing_zeroes
-# n=6=110_2 and n=328=101001000_2 ✘WRONG ANSWER
-# got 1 expected 0
+  unless binary_num =~ /1\z/
+    binary_array.pop
+  end
 
-# power_of_2
-# n=5=101_2, n=16=2**4 and n=1024=2**10 ✘WRONG ANSWER
-# got 4 expected 0
-
-# medium1
-# n=51712=110010100000000_2 and n=20=10100_2
-# got 9 expected 2
-
-def solution(a)
-  return a.to_s(2).split('1').map{|n| n.length}.max || 0
+  return binary_array.map{|n| n.length}.max || 0
 end
 
 class Tests < MiniTest::Unit::TestCase
@@ -28,5 +22,17 @@ class Tests < MiniTest::Unit::TestCase
 
   def test_basic_2
     assert_equal 0, solution(15)
+  end
+
+  def test_1
+    assert_equal 0, solution(16)
+  end
+
+  def test_2
+    assert_equal 2, solution(328)
+  end
+
+  def test_3
+    assert_equal 2, solution(51712)
   end
 end
