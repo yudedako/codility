@@ -3,13 +3,10 @@ require 'byebug'
 require 'pry-byebug'
 require 'minitest/autorun'
 
-# Test Score 87%
-
-# extreme_empty
-# empty array ✘RUNTIME ERROR
-# tested program terminated unexpectedly
-
+# Test Score 100%
 def solution(a, k)
+  return a if a.length.zero?
+
   rotation_num = k % a.length
   return rotation_num.zero? ? a : a.rotate(rotation_num * -1)
 end
