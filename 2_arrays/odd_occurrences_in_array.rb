@@ -3,27 +3,11 @@ require 'byebug'
 require 'pry-byebug'
 require 'minitest/autorun'
 
-# Test Score 66%
-# Correctness 80%
-# Performance 50%
-
-# Correctness tests
-
-# small random test n=201 ✘RUNTIME ERROR
-# tested program terminated unexpectedly
-
-# Perfomance tests
-
-# medium2
-# medium random test n=100,003 ✘RUNTIME ERROR
-# tested program terminated unexpectedly
-
-# big1
-# big random test n=999,999, multiple repetitions ✘RUNTIME ERROR
-# sested program terminated unexpectedly
-
+# Test Score 100%
+# - Correctness 100%
+# - Performance 100%
 def solution(a)
-  return a.group_by{|n| n}.select{|k,v| v.size == 1}.keys.first
+  return a.group_by{|n| n}.each_value{|v| return v.first if v.count.odd?}
 end
 
 class Tests < MiniTest::Unit::TestCase
@@ -33,5 +17,9 @@ class Tests < MiniTest::Unit::TestCase
 
   def test_1
     assert_equal 2, solution([1,2,1])
+  end
+
+  def test_2
+    assert_equal 2, solution([1,2,2,2,1])
   end
 end
