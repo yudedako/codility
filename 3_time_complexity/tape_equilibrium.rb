@@ -3,22 +3,12 @@ require 'byebug'
 require 'pry-byebug'
 require 'minitest/autorun'
 
-# Test score 83%
-# Correctness: 66%
-# Performance: 100%
-
-# Correctness tests
-
-# double
-# two elements ✘WRONG ANSWER
-# got 0 expected 2000
-
-# small
-# small elements ✘WRONG ANSWER
-# got 0 expected 20
+# Test score 100%
 def solution(a)
+  return (a[0] - a[1]).abs if a.size == 2
+
   total_sum = a.reduce(:+)
-  result, tmp_l, tmp_r = total_sum.abs, 0, total_sum
+  result, tmp_l, tmp_r = 1/0.0, 0, total_sum
 
   (1..a.size-1).each do |idx|
     tmp_l += a[idx-1]
@@ -49,7 +39,7 @@ class Tests < MiniTest::Unit::TestCase
   end
 
   def test_4
-    assert_equal 0, solution([-1000,1000])
+    assert_equal 0, solution([-1000,-1000])
   end
 
   def test_5
@@ -62,5 +52,29 @@ class Tests < MiniTest::Unit::TestCase
 
   def test_7
     assert_equal 0, solution([-10,-10])
+  end
+
+  def test_8
+    assert_equal 3, solution([1,-2])
+  end
+
+  def test_9
+    assert_equal 3, solution([-1,2])
+  end
+
+  def test_10
+    assert_equal 0, solution([0,0])
+  end
+
+  def test_11
+    assert_equal 1, solution([0,-1])
+  end
+
+  def test_12
+    assert_equal 1, solution([-1,0])
+  end
+
+  def test_4
+    assert_equal 0, solution([-1000,-1000])
   end
 end
