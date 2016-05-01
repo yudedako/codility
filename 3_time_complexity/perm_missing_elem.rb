@@ -3,43 +3,25 @@ require 'byebug'
 require 'pry-byebug'
 require 'minitest/autorun'
 
-# Test score 50%
-# Correctness: 20%
-# Performance: 80%
-
-# Correctness tests
-
-# empty_and_single
-# empty list and single element ✘WRONG ANSWER
-# got 0 expected 1
-
-# missing_first_or_last
-# the first or the last element is missing ✘WRONG ANSWER
-# got 0 expected 6
-# 1. 0.081 s WRONG ANSWER,  got 0 expected 6
-# 2. 0.081 s OK
-#
-# single
-# single element ✘WRONG ANSWER
-# got 0 expected 2
-
-# double
-# two elements ✘WRONG ANSWER
-# got 0 expected 3
+# Test score 70%
+# Correctness: 100%
+# Performance: 40%
 
 # Performance tests
 
 # large_range
-# range sequence, length = ~100,000 ✘WRONG ANSWER
-# got 0 expected 100001
+# range sequence, length = ~100,000 ✘TIMEOUT ERROR
+# running time: >6.00 sec., time limit: 0.53 sec.
+
+# large1
+# large test, length = ~100,000 ✘TIMEOUT ERROR
+# running time: >6.00 sec., time limit: 0.55 sec.
+
+# large2
+# large test, length = ~100,000 ✘TIMEOUT ERROR
+# running time: 1.30 sec., time limit: 0.47 sec.
 def solution(a)
-  result = 0
-  a.sort.each_with_index do |val, idx|
-    next if val == idx + 1
-    result = idx + 1
-    break
-  end
-  return result
+  (1..100001).each{|i| return i unless a.index(i) }
 end
 
 class Tests < MiniTest::Unit::TestCase
@@ -57,5 +39,13 @@ class Tests < MiniTest::Unit::TestCase
 
   def test_3
     assert_equal 2, solution([1,3])
+  end
+
+  def test_4
+    assert_equal 1, solution([2])
+  end
+
+  def test_5
+    assert_equal 1, solution([])
   end
 end
