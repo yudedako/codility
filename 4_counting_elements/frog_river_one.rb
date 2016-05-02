@@ -3,22 +3,11 @@ require 'byebug'
 require 'pry-byebug'
 require 'minitest/autorun'
 
-# Test score 54%
+# Test score 81%
 # Correctness 100%
-# Performance 0%
+# Performance 60%
 
-
-# medium_random
-# 6 and 2 random permutations, X = ~5,000 ✘WRONG ANSWER
-# got 475 expected 13472
-# medium_range
-
-# arithmetic sequences, X = 5,000 ✘WRONG ANSWER
-# got 4000 expected 5999
-
-# large_random
-# 10 and 100 random permutation, X = ~10,000 ✘WRONG ANSWER
-# got 23901 expected 60932
+## Performance tests
 
 # large_permutation
 # permutation tests ✘WRONG ANSWER
@@ -28,13 +17,15 @@ require 'minitest/autorun'
 # arithmetic sequences, X = 30,000 ✘WRONG ANSWER
 # got 25000 expected 35000
 def solution(x, a)
-  leafs = []
-  a.each_with_index do |val, idx|
-    leafs << val if val <= x
-    return idx if x == leafs.uniq.size
+  max_sec = 0
+  (1..x).each do |time|
+    tmp_time = a.index(time)
+
+    return -1 if tmp_time.nil?
+    max_sec = tmp_time if max_sec < tmp_time
   end
 
-  return -1
+  return max_sec
 end
 
 class Tests < MiniTest::Unit::TestCase
@@ -43,7 +34,7 @@ class Tests < MiniTest::Unit::TestCase
   end
 
   def test_1
-    assert_equal 7, solution(5, [1,3,1,4,5,2,3,5,4])
+    assert_equal 5, solution(5, [1,3,1,4,5,2,3,5,4])
   end
 
   def test_2
