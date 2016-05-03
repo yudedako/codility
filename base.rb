@@ -7,6 +7,10 @@ require 'minitest/autorun'
 # - Correctness 0%
 # - Performance 0%
 
+## Correctness tests
+
+## Performance tests
+
 def solution(a)
   return 0
 end

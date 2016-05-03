@@ -4,6 +4,9 @@ require 'pry-byebug'
 require 'minitest/autorun'
 
 # Test Score 100%
+# - Correctness 100%
+# - Performance 100%
+
 def solution(x, y, d)
   return 0 if y == x
   return 1 if (y-x) <= d

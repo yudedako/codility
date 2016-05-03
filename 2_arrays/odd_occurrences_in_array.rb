@@ -6,6 +6,7 @@ require 'minitest/autorun'
 # Test Score 100%
 # - Correctness 100%
 # - Performance 100%
+
 def solution(a)
   return a.group_by{|n| n}.each_value{|v| return v.first if v.count.odd?}
 end

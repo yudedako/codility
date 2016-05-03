@@ -4,6 +4,9 @@ require 'pry-byebug'
 require 'minitest/autorun'
 
 # Test Score 100%
+# - Correctness 100%
+# - Performance 100%
+
 def solution(n)
   binary_num = n.to_s(2)
   binary_array = binary_num.split('1')

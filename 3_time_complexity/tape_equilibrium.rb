@@ -4,6 +4,9 @@ require 'pry-byebug'
 require 'minitest/autorun'
 
 # Test score 100%
+# - Correctness 100%
+# - Performance 100%
+
 def solution(a)
   return (a[0] - a[1]).abs if a.size == 2
 
