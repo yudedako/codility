@@ -3,33 +3,18 @@ require 'byebug'
 require 'pry-byebug'
 require 'minitest/autorun'
 
-# Test score 55%
-# - Correctness 80%
-# - Performance 25%
+# Test score 100%
+# - Correctness 100%
+# - Performance 100%
 
 ## Correctness tests
 
-# extreme_single
-# a single element ✘RUNTIME ERROR
-# tested program terminated unexpectedly
-
 ## Performance tests
 
-# large_1
-# chaotic + sequence 1, 2, ..., 40000 (without minus) ✘TIMEOUT ERROR
-# running time: 3.33 sec., time limit: 0.56 sec.
-
-# large_2
-# shuffled sequence 1, 2, ..., 100000 (without minus) ✘TIMEOUT ERROR
-# running time: >6.00 sec., time limit: 0.62 sec.
-
-# large_3 
-# chaotic + many -1, 1, 2, 3 (with minus) ✘TIMEOUT ERROR
-# running time: 2.11 sec., time limit: 0.58 sec.
-
 def solution(a)
-  (1..a.size).each do |idx|
-    return idx unless a.index(idx)
+  check_array = a.group_by{|n| n }
+  (1..100001).each do |idx|
+    return idx unless check_array[idx]
   end
 end
 
@@ -48,5 +33,9 @@ class Tests < MiniTest::Unit::TestCase
 
   def test_3
     assert_equal 3, solution([1,2,4,5,7])
+  end
+
+  def test_4
+    assert_equal 99998, solution((1..99997).to_a.concat((99999..100000).to_a))
   end
 end
