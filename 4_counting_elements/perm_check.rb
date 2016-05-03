@@ -3,19 +3,29 @@ require 'byebug'
 require 'pry-byebug'
 require 'minitest/autorun'
 
-# Test score 80%
-# - Correctness 80%
-# - Performance 80%
-def solution(a)
-  a_count = a.count
-  a_first = a.uniq.sort.first
-  a_last = a.uniq.sort.last
+# Test score 70%
+# - Correctness 100%
+# - Performance 40%
 
-  if a_first == 1 && a_last == a_count
-    return 1
-  else
-    return 0
+## Performance tests
+
+# antiSum2
+# total sum is correct, but it is not a permutation, N = ~100,000 ✘TIMEOUT ERROR
+# running time: >6.00 sec., time limit: 0.62 sec.
+
+# large_permutation
+# permutation + one element occurs three times, N = ~100,000 ✘TIMEOUT ERROR
+# running time: >6.00 sec., time limit: 0.62 sec.
+
+# large_range 
+# sequence 1, 2, ..., N, N = ~100,000 ✘TIMEOUT ERROR
+# running time: >6.00 sec., time limit: 0.61 sec.
+
+def solution(a)
+  (1..a.size).to_a.each do |idx|
+    return 0 unless a.index(idx)
   end
+  return 1
 end
 
 class Tests < MiniTest::Unit::TestCase
