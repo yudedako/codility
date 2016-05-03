@@ -3,6 +3,10 @@ require 'byebug'
 require 'pry-byebug'
 require 'minitest/autorun'
 
+# Test score 0%
+# - Correctness 0%
+# - Performance 0%
+
 def solution(a)
   return 0
 end

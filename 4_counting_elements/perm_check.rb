@@ -3,27 +3,15 @@ require 'byebug'
 require 'pry-byebug'
 require 'minitest/autorun'
 
-# Test score 70%
+# Test score 100%
 # - Correctness 100%
-# - Performance 40%
-
-## Performance tests
-
-# antiSum2
-# total sum is correct, but it is not a permutation, N = ~100,000 ✘TIMEOUT ERROR
-# running time: >6.00 sec., time limit: 0.62 sec.
-
-# large_permutation
-# permutation + one element occurs three times, N = ~100,000 ✘TIMEOUT ERROR
-# running time: >6.00 sec., time limit: 0.62 sec.
-
-# large_range 
-# sequence 1, 2, ..., N, N = ~100,000 ✘TIMEOUT ERROR
-# running time: >6.00 sec., time limit: 0.61 sec.
+# - Performance 100%
 
 def solution(a)
-  (1..a.size).to_a.each do |idx|
-    return 0 unless a.index(idx)
+  before_num = 1
+  a.sort.each do |num|
+    return 0 if before_num != num
+    before_num = num + 1
   end
   return 1
 end
