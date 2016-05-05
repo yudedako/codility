@@ -3,55 +3,30 @@ require 'byebug'
 require 'pry-byebug'
 require 'minitest/autorun'
 
-# Test score 60%
+# Test score 100%
 # - Correctness 100%
-# - Performance 20%
+# - Performance 100%
 
 ## Correctness tests
 
 ## Performance tests
 
-# large_ones
-# numbers from -1 to 1, N = ~100,000 ✘TIMEOUT ERROR
-# running time: >6.00 sec., time limit: 0.65 sec.
-
-# large_random
-# random, N = ~100,000 ✘TIMEOUT ERROR
-# running time: >6.00 sec., time limit: 0.67 sec.
-
-# extreme_values
-# all maximal values, N = ~100,000 ✘TIMEOUT ERROR
-# running time: >6.00 sec., time limit: 0.65 sec.
-
-# large_sequence
-# many seqeneces, N = ~100,000 ✘TIMEOUT ERROR
-# running time: >6.00 sec., time limit: 0.64 sec.
-
 def solution(a)
   result = 0
   min_avg = (a[0] + a[1]) / 2.0
 
-  (0..a.size-1).each do |num_p|
-    break if a.size < (num_p+2)
+  (2..a.size-1).each do |idx|
+    tmp_avg_1 = (a[idx-1] + a[idx]) / 2.0
+    tmp_avg_2 = (a[idx-2] + a[idx-1] + a[idx]) / 3.0
 
-    tmp_sum = a[num_p..a.size-1].reduce(:+)
-    tmp_count = (a.size-1 - num_p + 1).to_f
-
-    tmp_avg = tmp_sum / tmp_count
-    if tmp_avg < min_avg
-      min_avg = tmp_avg
-      result = num_p
+    if tmp_avg_1 < min_avg
+      result = idx - 1
+      min_avg = tmp_avg_1
     end
 
-    (num_p+2..a.size-1).to_a.reverse.each do |num_q|
-      tmp_sum -= a[num_q]
-      tmp_count -= 1.0
-
-      tmp_avg = tmp_sum / tmp_count
-      if tmp_avg < min_avg
-        min_avg = tmp_avg
-        result = num_p
-      end
+    if tmp_avg_2 < min_avg
+      result = idx - 2
+      min_avg = tmp_avg_2
     end
   end
 
