@@ -3,34 +3,28 @@ require 'byebug'
 require 'pry-byebug'
 require 'minitest/autorun'
 
-# Test score 0%
+# Test score 75%
 # - Correctness 100%
-# - Performance 0%
+# - Performance 100%
 
 ## Correctness tests
 
 ## Performance tests
 
-# almost_all_same_letters
-# GGGGGG..??..GGGGGG..??..GGGGGG ✘TIMEOUT ERROR
-# running time: >7.00 sec., time limit: 1.12 sec.
-
-# large_random 
-# large random string, length ✘TIMEOUT ERROR
-# running time: >7.00 sec., time limit: 1.02 sec.
-
-# extreme_large
-# all max ranges ✘TIMEOUT ERROR
-# running time: >7.00 sec., time limit: 1.17 sec.
-
 def solution(s, p, q)
   result = []
 
-  dna_hash = { 'A' => 1, 'C' => 2, 'G' => 3, 'T' => 4 }
-  dna_array = s.chars.map{|c| dna_hash[c]}
-
   (0..p.size-1).each do |idx|
-    result << dna_array[p[idx]..q[idx]].min
+    buff = s[p[idx]..q[idx]]
+    if buff.index('A')
+      result << 1
+    elsif buff.index('C')
+      result << 2
+    elsif buff.index('G')
+      result << 3
+    else
+      result << 4
+    end
   end
 
   return result
