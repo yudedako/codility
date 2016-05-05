@@ -4,27 +4,15 @@ require 'pry-byebug'
 require 'minitest/autorun'
 
 # Test score 75%
-# - Correctness 75%
-# - Performance 75%
+# - Correctness 100%
+# - Performance 100%
 
 ## Correctness tests
 
-# extreme_endpoints
-# verify handling of range endpoints, multiple runs ✘WRONG ANSWER
-# got 2 expected 1
-
 ## Performance tests
 
-# big_values2
-# A = 101, B = 123M+, K = 10K ✘WRONG ANSWER
-# got 12346 expected 12345
-
 def solution(a, b, k)
-  if b == a
-    return (a % k).zero? ? 1 : 0
-  else
-    return ((b - a) / k) + 1
-  end
+  return (b / k) - ((a - 1) / k)
 end
 
 class Tests < MiniTest::Unit::TestCase
@@ -58,5 +46,9 @@ class Tests < MiniTest::Unit::TestCase
 
   def test_7
     assert_equal 0, solution(5, 5, 2)
+  end
+
+  def test_8
+    assert_equal 12345, solution(101, 123456789, 10000)
   end
 end
