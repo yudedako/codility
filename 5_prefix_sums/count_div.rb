@@ -3,13 +3,21 @@ require 'byebug'
 require 'pry-byebug'
 require 'minitest/autorun'
 
-# Test score 0%
-# - Correctness 0%
-# - Performance 0%
+# Test score 75%
+# - Correctness 75%
+# - Performance 75%
 
 ## Correctness tests
 
+# extreme_endpoints
+# verify handling of range endpoints, multiple runs ✘WRONG ANSWER
+# got 2 expected 1
+
 ## Performance tests
+
+# big_values2
+# A = 101, B = 123M+, K = 10K ✘WRONG ANSWER
+# got 12346 expected 12345
 
 def solution(a, b, k)
   if b == a
