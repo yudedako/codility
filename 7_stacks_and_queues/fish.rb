@@ -28,7 +28,7 @@ require 'minitest/autorun'
 # got 99999 expected 1
 
 def solution(a, b)
-  live_up_fish = 0
+  live_fish = 0
   stack_fishs = []
 
   a.each_with_index do |size, idx|
@@ -37,17 +37,18 @@ def solution(a, b)
       next
     end
 
-    if stack_fishs.size > 0
+    while stack_fishs.size > 0
       if size < stack_fishs.last
-        next
+        break
       else
         stack_fishs.pop
       end
     end
-    live_up_fish += 1
+
+    live_fish += 1 if stack_fishs.size.zero?
   end
 
-  return live_up_fish + stack_fishs.size
+  return live_fish + stack_fishs.size
 end
 
 class Tests < MiniTest::Unit::TestCase
@@ -77,5 +78,17 @@ class Tests < MiniTest::Unit::TestCase
 
   def test_6
     assert_equal 2, solution([1, 2], [0, 1])
+  end
+
+  def test_7
+    assert_equal 1, solution([4, 2, 3, 1], [1, 1, 0, 0])
+  end
+
+  def test_8
+    assert_equal 2, solution([1, 4, 2, 3, 5], [0, 1, 1, 0, 0])
+  end
+
+  def test_9
+    assert_equal 3, solution([1, 4, 2, 3, 5, 6], [0, 1, 1, 0, 0, 1])
   end
 end
