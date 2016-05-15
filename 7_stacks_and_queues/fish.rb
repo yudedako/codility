@@ -3,29 +3,13 @@ require 'byebug'
 require 'pry-byebug'
 require 'minitest/autorun'
 
-# Test score 50%
-# - Correctness 75%
-# - Performance 25%
+# Test score 100%
+# - Correctness 100%
+# - Performance 100%
 
 ## Correctness tests
 
-# simple2
-# simple test ✘WRONG ANSWER
-# got 6 expected 1
-
 ## Performance tests
-
-# medium_random
-# small medium test, N = ~5,000 ✘WRONG ANSWER
-# got 2498 expected 106
-
-# large_random
-# large random test, N = ~100,000 ✘WRONG ANSWER
-# got 49859 expected 572
-
-# extreme_range1
-# all except one fish flowing in the same direction ✘WRONG ANSWER
-# got 99999 expected 1
 
 def solution(a, b)
   live_fish = 0
